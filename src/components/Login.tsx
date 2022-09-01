@@ -63,7 +63,7 @@ const Login = ({ setUser }: LoginProp) => {
 
       axios({
         method: "POST",
-        url: "/user",
+        url: "https://lucidity-wrapped.herokuapp.com/user",
         data: body,
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +88,7 @@ const Login = ({ setUser }: LoginProp) => {
 
       axios({
         method: "POST",
-        url: "/user/login",
+        url: "https://lucidity-wrapped.herokuapp.com/user/login",
         data: body,
       })
         .then((response) => {

@@ -38,7 +38,7 @@ let Upload = ({ user, setUser }: UploadProp) => {
     });
     await axios
       .post(
-        '/upload',
+        'https://lucidity-wrapped.herokuapp.com/upload',
         { inputFile: fileToUpload },
         { headers: { 'Content-Type': 'multipart/form-data' } }
       )
@@ -48,7 +48,7 @@ let Upload = ({ user, setUser }: UploadProp) => {
       });
     axios
       .post(
-        '/analysistypes',
+        'https://lucidity-wrapped.herokuapp.com/analysistypes',
         { dataList: checked, userID: id },
         { headers: { 'Content-Type': 'application/json' } }
       )
