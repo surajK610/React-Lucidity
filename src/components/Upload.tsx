@@ -4,6 +4,8 @@ import './Upload.css';
 import { useNavigate } from 'react-router-dom';
 import { PulseSpinner, StageSpinner } from 'react-spinners-kit';
 
+axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
+
 type UploadProp = {
   user: User | null;
   setUser: React.Dispatch<React.SetStateAction<User | null>>;
@@ -38,7 +40,7 @@ let Upload = ({ user, setUser }: UploadProp) => {
     });
     await axios
       .post(
-        'https://lucidity-wrapped.herokuapp.com/upload',
+        '/upload',
         { inputFile: fileToUpload },
         { headers: { 'Content-Type': 'multipart/form-data' } }
       )
@@ -48,7 +50,7 @@ let Upload = ({ user, setUser }: UploadProp) => {
       });
     axios
       .post(
-        'https://lucidity-wrapped.herokuapp.com/analysistypes',
+        '/analysistypes',
         { dataList: checked, userID: id },
         { headers: { 'Content-Type': 'application/json' } }
       )

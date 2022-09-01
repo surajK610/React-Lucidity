@@ -30,6 +30,7 @@ const modalStyle = {
     backgroundColor: 'rgba(0, 0, 0, 0.8)'
   }
 };
+axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
 
 const Login = ({ setUser }: LoginProp) => {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ const Login = ({ setUser }: LoginProp) => {
 
       axios({
         method: "POST",
-        url: "https://lucidity-wrapped.herokuapp.com/user",
+        url: "/user",
         data: body,
         headers: {
           "Content-Type": "application/json",
@@ -88,7 +89,7 @@ const Login = ({ setUser }: LoginProp) => {
 
       axios({
         method: "POST",
-        url: "https://lucidity-wrapped.herokuapp.com/user/login",
+        url: "/user/login",
         data: body,
       })
         .then((response) => {
