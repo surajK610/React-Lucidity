@@ -2,9 +2,10 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
+axios.defaults.baseURL = 'https://api.example.com';
 
 type errorMessage = {
   name: string;
@@ -17,20 +18,19 @@ type LoginProp = {
 
 const modalStyle = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    width: 'min(90%, 500px)',
-    borderRadius: '15px'
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+    width: "min(90%, 500px)",
+    borderRadius: "15px",
   },
   overlay: {
-    backgroundColor: 'rgba(0, 0, 0, 0.8)'
-  }
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+  },
 };
-axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
 
 const Login = ({ setUser }: LoginProp) => {
   const navigate = useNavigate();
@@ -110,7 +110,16 @@ const Login = ({ setUser }: LoginProp) => {
     <div className="login-container">
       <div className="login__left-container">
         <h1 className="login__title">Lucidity</h1>
-        <h1 className="login__subtitle">Log In to Continue</h1>
+        <h1 className="login__subtitle">
+          The premier text message analysis platform. 
+          <br />
+          <br />
+          Lucidity uses cutting-edge algorithms and models to help you better understand your texting behavior.{" "}
+          <br />
+          <br />
+          To get started, log in and upload your Facebook Messenger data. Don't worry,
+          Lucdity never shares your data and will delete it once you view your results!
+        </h1>
       </div>
       <div className="login__right-container">
         <div className="form-container">
@@ -163,7 +172,11 @@ const Login = ({ setUser }: LoginProp) => {
           </div>
         </div>
         <div className="terms-box">
-          By creating a Lucidity account, you are agreeing to our <span onClick={() => setModalOpen(true)} className="terms-link">Terms and Conditions</span>.
+          By creating a Lucidity account, you are agreeing to our{" "}
+          <span onClick={() => setModalOpen(true)} className="terms-link">
+            Terms and Conditions
+          </span>
+          .
         </div>
       </div>
       <Modal
@@ -172,16 +185,19 @@ const Login = ({ setUser }: LoginProp) => {
         style={modalStyle}
         contentLabel="Terms and Conditions"
       >
-        <div className="terms__exit" onClick={() => setModalOpen(false)}>&#10005;</div>
+        <div className="terms__exit" onClick={() => setModalOpen(false)}>
+          &#10005;
+        </div>
         <h1 className="terms__title">Terms and Conditions</h1>
         <p>
-        We reserve the right to change, modify or remove the content or the services from
-        time to time. We cannot guarantee that the Service will be available at all times.
-        After submission, your data will not be used for any thing other than performing
-        your requested analysis. Subsequently it will be immediately deleted. We will 
-        retain the results of your requested analysis so we can show you again if you
-        choose to visit the website. 
-        By submitting your data, you consent to these terms and conditions.
+          We reserve the right to change, modify or remove the content or the
+          services from time to time. We cannot guarantee that the Service will
+          be available at all times. After submission, your data will not be
+          used for any thing other than performing your requested analysis.
+          Subsequently it will be immediately deleted. We will retain the
+          results of your requested analysis so we can show you again if you
+          choose to visit the website. By submitting your data, you consent to
+          these terms and conditions.
         </p>
       </Modal>
     </div>

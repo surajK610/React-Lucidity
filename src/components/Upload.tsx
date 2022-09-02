@@ -1,10 +1,10 @@
-import axios from 'axios';
-import React, { useState } from 'react';
-import './Upload.css';
-import { useNavigate } from 'react-router-dom';
-import { PulseSpinner, StageSpinner } from 'react-spinners-kit';
+import axios from "axios";
+import React, { useState } from "react";
+import "./Upload.css";
+import { useNavigate } from "react-router-dom";
+import { PulseSpinner, StageSpinner } from "react-spinners-kit";
 
-axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
+axios.defaults.baseURL = 'https://api.example.com';
 
 type UploadProp = {
   user: User | null;
@@ -40,9 +40,9 @@ let Upload = ({ user, setUser }: UploadProp) => {
     });
     await axios
       .post(
-        '/upload',
+        "/upload",
         { inputFile: fileToUpload },
-        { headers: { 'Content-Type': 'multipart/form-data' } }
+        { headers: { "Content-Type": "multipart/form-data" } }
       )
       .then((response) => {
         setLoading(true);
@@ -50,18 +50,20 @@ let Upload = ({ user, setUser }: UploadProp) => {
       });
     axios
       .post(
-        '/analysistypes',
+        "/analysistypes",
         { dataList: checked, userID: id },
-        { headers: { 'Content-Type': 'application/json' } }
+        { headers: { "Content-Type": "application/json" } }
       )
       .then((response) => {
         const user: User = response.data as User;
         setUser(user);
-        console.log('user', user);
+        console.log("user", user);
+        console.log("checked", checked)
+        console.log("userid", id)
       })
       .then(() => {
         setLoading(false);
-        navigate('/wrapped');
+        navigate("/wrapped");
       });
   };
 
@@ -70,11 +72,11 @@ let Upload = ({ user, setUser }: UploadProp) => {
       <div className="upload-left">
         <div className="upload-left__title">Upload File</div>
         <div className="upload-left__subtitle">
-          On the Facebook Download Your Information page, select the appropriate
-          date range, "JSON" as the Format, "Low" for Media Quality, then in the
-          list below that, Deselect All and check only Posts, Comments, and
-          Messages. Then click on "Create File", and when it arrives, select the
-          file once you receive and download it.
+          Navigate to the Facebook "Download Your Information" page, select the
+          appropriate date range, "JSON" as the Format, "Low" for Media Quality,
+          then in the list below that, Deselect All and check only Posts,
+          Comments, and Messages. Then click on "Create File", and when it
+          arrives via email, select the file once you receive and download it.
         </div>
 
         <label className="upload-left__upload">

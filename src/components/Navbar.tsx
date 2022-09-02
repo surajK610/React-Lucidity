@@ -14,12 +14,12 @@ let Navbar = ({ backgroundColor, user, logOut }: NavbarProp) => {
       <Link to="/" className="link">
         Lucidity
       </Link>
-      <Link to="/" className="link">
-        Overview
+      <Link to="/wrapped" className="link">
+        Statistics
       </Link>
-      <Link to="/" className="link">
+      {/* <Link to="/" className="link">
         About
-      </Link>
+      </Link> */}
       {user ? (
         <>
           <div className="link-right">{user.name}</div>

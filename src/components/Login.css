@@ -33,11 +33,11 @@
 }
 
 .login__subtitle {
-  font-size: 64px;
+  font-size: 20px;
   font-weight: 500;
-  color: #a8d6ff;
-  text-align: center;
-  text-transform: uppercase;
+  color: #999999;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .form-container {
@@ -79,14 +79,14 @@ form > input {
   margin: 20px 0;
 }
 
-input[type="text"],
-input[type="password"] {
+input[type='text'],
+input[type='password'] {
   color: #000;
   background-color: #ecf6ff;
   text-indent: 20px;
 }
 
-input[type="submit"] {
+input[type='submit'] {
   color: #fff;
   background-color: #9ccafa;
   cursor: pointer;

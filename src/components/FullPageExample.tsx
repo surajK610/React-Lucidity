@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import Emotions from "./Emotions";
 import "./FullPage.css";
 
-type FullPageProp = {
+type FullPageExampleProp = {
   user: User;
 };
 
@@ -29,6 +29,7 @@ const userDataParts: string[] = [
 ];
 
 const possibleSectionNames: string[] = [
+  "intro",
   "statistics",
   "emojis",
   "emotions",
@@ -39,7 +40,7 @@ const possibleSectionNames: string[] = [
   "personality",
 ];
 
-const FullPage = ({ user }: FullPageProp) => {
+const FullPageExample = ({ user }: FullPageExampleProp) => {
   const navigate = useNavigate();
 
   const [sectionNames, setSectionNames] = useState<string[]>([]);
@@ -72,6 +73,30 @@ const FullPage = ({ user }: FullPageProp) => {
             render={({ state, fullpageApi }) => {
               return (
                 <ReactFullpage.Wrapper>
+                  {
+                    <div id="intro" className="section">
+                      <h1 className="login__title">
+                    LUCIDITY
+                    </h1>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <h1 className="login__subtitle">
+                    The premier text message analysis platform. <span className="color--accent">Scroll down for an example analysis!</span>
+                    <br />
+                    <br />
+                    Lucidity uses cutting-edge algorithms and models to help you better understand your texting behavior.{" "}
+                    <br />
+                    <br />
+                    
+                    To get started, log in and upload your Facebook Messenger data. Don't worry,
+                    Lucdity never shares your data and will delete it once you view your results!
+                    </h1>
+                    
+                    
+                  </div>}
+
                   {user.dataList.includes("messaging_profile") ? (
                     <div id="statistics" className="section">
                       <Statistics
@@ -79,7 +104,7 @@ const FullPage = ({ user }: FullPageProp) => {
                         totalMessages={user.totalMessages}
                         convoInitFreq={user.convoInitFreq}
                         msgSentiment={user.msgSentiment.positive}
-                        headerMessage="Dive into Some Summary Statistics!"
+                        headerMessage="Here is an Example Analysis!"
                       ></Statistics>
                     </div>
                   ) : null}
@@ -89,24 +114,6 @@ const FullPage = ({ user }: FullPageProp) => {
                         mostUsedEmojis={user.favEmojis}
                         users={user.emojisByContact}
                       ></Emoji>
-                    </div>
-                  ) : null}
-                  {user.dataList.includes("emotions") ? (
-                    <div id="emotions" className="section">
-                      <Emotions emotionList={user.emotions}></Emotions>
-                    </div>
-                  ) : null}
-                  {user.dataList.includes("response_time") ? (
-                    <div id="responses" className="section">
-                      <Response
-                        avgResponseTime={user.avgResponseTime}
-                        responseUsers={user.contactResTimes}
-                      ></Response>
-                    </div>
-                  ) : null}
-                  {user.dataList.includes("topics") ? (
-                    <div id="topics" className="section">
-                      <Topics topicList={user.topics}></Topics>
                     </div>
                   ) : null}
                   {user.dataList.includes("celeb_matches") ? (
@@ -121,9 +128,27 @@ const FullPage = ({ user }: FullPageProp) => {
                       <WordCloud words={user.wordFreqs}></WordCloud>
                     </div>
                   ) : null}
+                  {user.dataList.includes("topics") ? (
+                    <div id="topics" className="section">
+                      <Topics topicList={user.topics}></Topics>
+                    </div>
+                  ) : null}
                   {user.dataList.includes("personality") ? (
                     <div id="personality" className="section">
                       <Personality personality={user.personality}></Personality>
+                    </div>
+                  ) : null}
+                  {user.dataList.includes("response_time") ? (
+                    <div id="responses" className="section">
+                      <Response
+                        avgResponseTime={user.avgResponseTime}
+                        responseUsers={user.contactResTimes}
+                      ></Response>
+                    </div>
+                  ) : null}
+                  {user.dataList.includes("emotions") ? (
+                    <div id="emotions" className="section">
+                      <Emotions emotionList={user.emotions}></Emotions>
                     </div>
                   ) : null}
                 </ReactFullpage.Wrapper>
@@ -143,4 +168,4 @@ const FullPage = ({ user }: FullPageProp) => {
   );
 };
 
-export default FullPage;
+export default FullPageExample;

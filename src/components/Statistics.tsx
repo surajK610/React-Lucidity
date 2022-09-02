@@ -7,6 +7,7 @@ type StatisticsProp = {
   totalMessages: number;
   convoInitFreq: string;
   msgSentiment: string;
+  headerMessage: string;
 };
 
 let Statistics = ({
@@ -14,10 +15,11 @@ let Statistics = ({
   totalMessages,
   convoInitFreq,
   msgSentiment,
+  headerMessage
 }: StatisticsProp) => {
   return (
     <div className="container-big">
-      <h2 className="header-statistics">Dive into Summary Statistics!</h2>
+      <h2 className="header-statistics">{headerMessage}</h2>
       <div className="container-statistics">
         <div className="form-container-statistics">
           <h3 className="form__title-statistics">Total Messages Sent: </h3>
