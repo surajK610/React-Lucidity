@@ -14,11 +14,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Emotions from './components/Emotions';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://api.example.com';
+axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
 
 function App() {
   const [user, setUser] = useState<User | null>(null);
-  const [userExample, setUserExample] = useState<User | null>(null);
   const [navColor, setNavColor] = useState<string>('#aecefe00');
 
   const navigate = useNavigate();
@@ -47,28 +46,13 @@ function App() {
   };
 
 
-  useEffect(() => {
-    if (userExample === null) {
-      axios
-      .post(
-        "/example", 
-        { userID: '631017bf3f01c43bccaadb3d' },
-        { headers: { "Content-Type": "application/json" } }
-      )
-      .then((response) => {
-        const userEx: User = response.data as User;
-        setUserExample(userEx);
-      })
-    }
-  }, [userExample]);
-
   return (
     <div>
       <Navbar backgroundColor={navColor} user={user} logOut={logOut}></Navbar>
       <Routes>
       <Route
           path="example"
-          element={<FullPageExample user={userExample as User}></FullPageExample>}
+          element={<FullPageExample></FullPageExample>}
         />
         <Route
           path="upload"

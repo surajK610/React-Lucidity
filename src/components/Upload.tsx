@@ -4,7 +4,7 @@ import "./Upload.css";
 import { useNavigate } from "react-router-dom";
 import { PulseSpinner, StageSpinner } from "react-spinners-kit";
 
-axios.defaults.baseURL = 'https://api.example.com';
+axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
 
 type UploadProp = {
   user: User | null;

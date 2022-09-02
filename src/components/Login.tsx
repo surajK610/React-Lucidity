@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 
 Modal.setAppElement("#root");
-axios.defaults.baseURL = 'https://api.example.com';
+axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
 
 type errorMessage = {
   name: string;
