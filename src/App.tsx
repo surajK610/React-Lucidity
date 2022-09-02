@@ -14,10 +14,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Emotions from './components/Emotions';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
-
 function App() {
   const [user, setUser] = useState<User | null>(null);
+  const [userExample, setUserExample] = useState<User | null>(null);
   const [navColor, setNavColor] = useState<string>('#aecefe00');
 
   const navigate = useNavigate();
@@ -45,6 +44,21 @@ function App() {
     navigate('/login', { replace: true });
   };
 
+
+  useEffect(() => {
+    if (userExample === null) {
+      axios
+      .post(
+        "/example", 
+        { userID: '631017bf3f01c43bccaadb3d' },
+        { headers: { "Content-Type": "application/json" } }
+      )
+      .then((response) => {
+        const userEx: User = response.data as User;
+        setUserExample(userEx);
+      })
+    }
+  }, [userExample]);
 
   return (
     <div>
