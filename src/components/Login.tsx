@@ -6,6 +6,8 @@ import Modal from "react-modal";
 
 Modal.setAppElement("#root");
 
+axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
+
 type errorMessage = {
   name: string;
   message: string;
@@ -110,7 +112,7 @@ const Login = ({ setUser }: LoginProp) => {
       <div className="login__left-container">
         <h1 className="login__title">Lucidity</h1>
         <h1 className="login__subtitle">
-          The premier text message analysis platform. 
+          The premier text message analysis platform. Click LUCIDITY in the top left to learn more! 
           <br />
           <br />
           Lucidity uses cutting-edge algorithms and models to help you better understand your texting behavior.{" "}

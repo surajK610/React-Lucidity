@@ -14,6 +14,7 @@ import Emotions from "./Emotions";
 import "./FullPage.css";
 import axios from "axios";
 
+axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
 
 const userDataParts: string[] = [
   "messaging_profile",
@@ -44,6 +45,7 @@ const FullPageExample = () => {
   const [sectionNames, setSectionNames] = useState<string[]>([]);
   const [userExample, setUserExample] = useState<User | null>(null);
 
+  console.log("GOT HERE")
 
   useEffect(() => {
     console.log("user is null");
