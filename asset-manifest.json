@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/React-Lucidity/static/css/main.393f5338.css",
-    "main.js": "/React-Lucidity/static/js/main.3877d267.js",
+    "main.css": "/React-Lucidity/static/css/main.12e0acf3.css",
+    "main.js": "/React-Lucidity/static/js/main.38951416.js",
     "static/media/face.jpg": "/React-Lucidity/static/media/face.dea3554d5b3c8364ad1e.jpg",
     "index.html": "/React-Lucidity/index.html",
-    "main.393f5338.css.map": "/React-Lucidity/static/css/main.393f5338.css.map",
-    "main.3877d267.js.map": "/React-Lucidity/static/js/main.3877d267.js.map"
+    "main.12e0acf3.css.map": "/React-Lucidity/static/css/main.12e0acf3.css.map",
+    "main.38951416.js.map": "/React-Lucidity/static/js/main.38951416.js.map"
   },
   "entrypoints": [
-    "static/css/main.393f5338.css",
-    "static/js/main.3877d267.js"
+    "static/css/main.12e0acf3.css",
+    "static/js/main.38951416.js"
   ]
 }
