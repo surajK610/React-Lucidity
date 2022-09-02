@@ -42,7 +42,7 @@ const possibleSectionNames: string[] = [
 const FullPageExample = () => {
   const navigate = useNavigate();
 
-  const [sectionNames, setSectionNames] = useState<string[]>([]);
+  const [sectionNames, setSectionNames] = useState<string[]>(possibleSectionNames);
   const [userExample, setUserExample] = useState<User | null>(null);
 
   console.log("GOT HERE")
