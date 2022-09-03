@@ -93,7 +93,7 @@ const FullPageExample = () => {
       color="#000"
       loading={loading}
     ></StageSpinner>
-    <h3 className="login__midtitle">Backend</h3><br />
+    <h1 className="login__midtitle">Backend</h1><br />
     </div>
     )}
       {userExample && (
