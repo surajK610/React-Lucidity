@@ -13,6 +13,8 @@ import { useNavigate } from "react-router-dom";
 import Emotions from "./Emotions";
 import "./FullPage.css";
 import axios from "axios";
+import { PulseSpinner, StageSpinner } from "react-spinners-kit";
+
 
 axios.defaults.baseURL = 'https://lucidity-wrapped.herokuapp.com';
 
@@ -44,6 +46,8 @@ const FullPageExample = () => {
 
   const [sectionNames, setSectionNames] = useState<string[]>(possibleSectionNames);
   const [userExample, setUserExample] = useState<User | null>(null);
+  const [loading, setLoading] = useState(false);
+
 
   console.log("GOT HERE")
 
@@ -62,7 +66,9 @@ const FullPageExample = () => {
           console.log(userEx);
         })
     if (userExample === null) {
+      setLoading(true);
       fetchUser().then(() => {
+        setLoading(false);
         console.log("NEW USER", userExample)
         const newSectionNames: string[] = [];
 
@@ -80,7 +86,16 @@ const FullPageExample = () => {
   }, [userExample]);
 
   return (
-    <>
+    <>{loading && (<div className="centered">
+    <h1 className="login__midtitle">Starting</h1><br />
+    <StageSpinner
+      size={100}
+      color="#000"
+      loading={loading}
+    ></StageSpinner>
+    <h3 className="login__midtitle">Backend</h3><br />
+    </div>
+    )}
       {userExample && (
         <div className="full-page-container">
           <ReactFullpage
